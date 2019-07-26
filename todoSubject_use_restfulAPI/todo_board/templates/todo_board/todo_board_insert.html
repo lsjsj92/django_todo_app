@@ -1,0 +1,17 @@
+{% extends 'todo_main/common/header.html' %}
+{% load staticfiles %}
+{% block main %}
+
+<div class="col-md-12">
+    <div class="container">
+        <form method="POST" class="post-form" action="{% url 'todo_board:todo_board_insert' %}">
+           {%csrf_token%}
+
+           {{form.as_p}}
+           <button type="submit" class="save btn btn-default">Save</button>
+       </form>
+    </div>
+
+</div>
+
+{% endblock main %}

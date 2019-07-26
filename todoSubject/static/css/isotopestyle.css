@@ -1,0 +1,224 @@
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+ul.menu li {
+    display: inline-block;
+    padding: 10px 25px;
+}
+ul.menu li button {
+    padding: 6px 20px;
+}
+.notes {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.grids {
+    margin-top: 20px;
+}
+.grid {
+    margin-top: 10px;
+    color: lightskyblue;
+}
+.grid_date {
+    color: lightskyblue;
+}
+.blue,
+.red,
+.green,
+.black {
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 200px;
+}
+.blue img,
+.red img,
+.green img,
+.black img {
+    height: 200px;
+    width: 100%;
+}
+.yellow img {
+    height: 405px;
+    width: 100%;
+}
+.blue {
+    width: 45%;
+    background: blue;
+}
+.red {
+    width: 30%;
+    background: red;
+}
+.green {
+    width: 30%;
+}
+.yellow {
+    width: 23.6%;
+    height: 405px;
+    margin-left: 5px;
+    margin-top: 5px;
+    background: yellow;
+}
+.black {
+    width: 45%;
+}
+.btn_active {
+    background: red;
+    border: 0px;
+    color: #fff;
+    outline: none;
+}
+input#searchNote {
+    width: 100%;
+    padding: 20px 12px;
+    font-style: italic;
+    margin-top: 20px;
+}
+i.custom_search {
+    position: absolute;
+    top: 43px;
+    right: 180px;
+}
+#portfolio_menu button {
+    width: 100px;
+    min-height: 20px;
+    border: 0px;
+    outline: none;
+}
+body {
+    overflow-x: hidden;
+}
+ul {
+    padding: 0;
+    margin: 0;
+}
+/*resposive*/
+
+@media all and (max-width: 1280px) and (min-width: 768px) {
+    .colum {
+        width: 100%;
+    }
+    ul.menu li {
+        padding: 10px 6px;
+    }
+    .blue,
+    .black {
+        width: 40%;
+    }
+    .red,
+    .green {
+        width: 30%;
+    }
+    .yellow {
+        width: 27%;
+    }
+}
+@media only screen and (max-width: 960px) and (min-width: 620px)  {
+    .colum {
+        width: 100%;
+    }
+    ul.menu li {
+        padding: 10px 30px;
+    }
+    ul.menu {
+        overflow: hidden;
+    }
+    .blue,
+    .black {
+        width: 40%;
+    }
+    .red,
+    .green {
+        width: 30%;
+    }
+    .yellow {
+        width: 27%;
+    }
+}
+@media all  and (max-width: 619px) and (min-width: 480px) {
+    .colum {
+        width: 100%;
+    }
+    ul.menu li {
+        padding: 10px 30px;
+    }
+    ul.menu {
+        overflow: hidden;
+    }
+    .blue,
+    .black {
+        width: 100%;
+    }
+    .red,
+    .green {
+        width: 100%;
+    }
+    .yellow {
+        width: 100%;
+        height: auto;
+    }
+}
+@media all and (max-width: 479px) and (min-width: 320px) {
+    .colum {
+        width: 100%;
+    }
+    ul.menu li {
+        padding: 10px 15px;
+    }
+    ul.menu {
+        overflow: hidden;
+    }
+    ul.menu li button {
+        padding: 6px 0px;
+    }
+    #portfolio button {
+        font-size: 10px;
+        width: 50px;
+    }
+    .blue,
+    .black {
+        width: 100%;
+    }
+    .red,
+    .green {
+        width: 100%;
+    }
+    .yellow {
+        width: 100%;
+        height: auto;
+    }
+}
+@media all and (max-width: 319px) {
+    .colum {
+        width: 100%;
+    }
+    ul.menu li {
+        padding: 10px 15px;
+    }
+    ul.menu {
+        overflow: hidden;
+    }
+    ul.menu li button {
+        padding: 6px 0px;
+    }
+    #portfolio button {
+        font-size: 10px;
+        width: 50px;
+    }
+    .blue,
+    .black {
+        width: 100%;
+        height: auto;
+    }
+    .red,
+    .green {
+        width: 100%;
+        height: auto;
+    }
+    .yellow {
+        width: 100%;
+        height: auto;
+    }
+}

@@ -1,0 +1,18 @@
+{% extends 'todo_main/common/header.html' %}
+{% load staticfiles %}
+{% block main %}
+
+<section id="blog">
+  <div class="container">
+   <form method="POST" class="post-form">
+       {%csrf_token%}
+
+       <p>정말로 {{ todo_list.title }} 일정을 삭제하시나요?</p>
+       <button type="button" class="btn btn-primary" onclick="location.href='{% url 'todo_board:todo_board_delete_complete' pk=todo_list.no %} '">
+            삭제
+      </button>
+   </form>
+  </div>
+</section>
+
+{% endblock main %}

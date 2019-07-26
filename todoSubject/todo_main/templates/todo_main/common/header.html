@@ -1,0 +1,156 @@
+<html lang="ko">
+
+    {% load staticfiles %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--Fontawesom-->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+        <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
+
+        <!-- Bootstrap -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/carousel.css' %}" />
+
+        <link rel="stylesheet" href="{% static 'css/isotope/style.css' %}">
+
+        <!--Main Stylesheet-->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script>
+
+
+
+        </script>
+		<style type="text/css">
+            #container {
+                min-width: 310px;
+                max-width: 800px;
+                height: 400px;
+                margin: 0 auto
+            }
+            input[type=text] {
+              width: 100%;
+              padding: 12px 20px;
+              margin: 8px 0;
+              box-sizing: border-box;
+            }
+
+            .list-group-item{
+                width : 40%;
+            }
+		</style>
+
+
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'todo_main:todo_main' %}">todo main</a></li>
+              <li><a href="{% url 'todo_board:todo_board' %}">todo list</a></li>
+            </ul>
+          </div>
+        </nav>
+        {% block main %}
+
+        {% endblock main %}
+    </body>
+
+    <script src="{% static 'js/Sortable.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+    <script>
+        new Sortable(todo_list_endDate, {
+            animation: 150,
+            ghostClass: 'blue-background-class'
+        });
+        new Sortable(todo_list_no_endDate, {
+            animation: 150,
+            ghostClass: 'blue-background-class'
+        });
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        function prioirty_save(){
+            todo_list = $(".list-group-item");
+            todo_dict = {}
+            for(var i = 0 ; i < todo_list.length ; i++){
+                todo_dict[todo_list[i].getAttribute("div_pk")] = i + 1
+            }
+            console.log(todo_dict);
+            $.ajax({
+              type: "POST",
+              url: "{% url 'todo_board:todo_board_save_priority' %}",
+              data: {'todo_dict': JSON.stringify(todo_dict), 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+              dataType: "json",
+              success: function(response){
+                console.log("성공");
+                window.location.href = "{% url 'todo_board:todo_board' %}"
+              },
+              error: function(request, status, error){
+                console.log("실패.");
+              },
+            });
+        }
+    </script>
+
+    <script>
+        completed = document.getElementsByName('complete');
+        for(var i = 0; i < completed.length ; i++){
+            completed[i].checked = true;
+        }
+
+        $("input[name*=complete]").change(function(){
+            if($(this).is(":checked")){
+                pk = $(this).attr("pk");
+                $.ajax({
+                  type: "POST",
+                  url: "{% url 'todo_board:todo_board_is_complete' %}",
+                  data: {'data': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                  dataType: "json",
+                  success: function(response){
+                    console.log("성공");
+                    window.location.href = "{% url 'todo_board:todo_board' %}"
+                  },
+                  error: function(request, status, error){
+                    console.log("실패.");
+                  },
+                });
+            }
+            //체크박스 해제
+            else{
+                pk = $(this).attr("pk");
+                $.ajax({
+                  type: "POST",
+                  url: "{% url 'todo_board:todo_board_is_non_complete' %}",
+                  data: {'data': pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                  dataType: "json",
+                  success: function(response){
+                    window.location.href = "{% url 'todo_board:todo_board' %}"
+                  },
+                  error: function(request, status, error){
+                    console.log("실패.");
+                  },
+                });
+            }
+        });
+
+    </script>
+</html>
+
