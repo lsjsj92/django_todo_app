@@ -1,0 +1,32 @@
+drop database todo_app;
+
+CREATE DATABASE todo_app;
+
+use todo_app;
+
+CREATE TABLE TODO_LIST(
+NO INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+PCODE CHAR(4) NOT NULL,
+USER_ID VARCHAR(50),
+TITLE VARCHAR(200),
+CONTENT VARCHAR(1000),
+IS_COMPLETE BOOLEAN,
+PRIORITY INT,
+END_DATE DATE
+);
+
+CREATE TABLE PROJECT_CODE(
+PCODE CHAR(4) NOT NULL PRIMARY KEY,
+PNAME VARCHAR(100) NOT NULL
+);
+
+insert into PROJECT_CODE(PCODE, PNAME) values('1', '수진일정');
+
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE) values('1', 'guest', '공부하기', '자바와 파이썬 공부', false);
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE, END_DATE) values('1', 'guest', '운동하기', '뱃살좀 빼자..', false, '2019-05-20');
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE, END_DATE) values('1', 'guest', '개발하기', 'todo list!!!', false, '2019-05-18');
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE) values('1', 'guest', '힘내기!', '할 수 있어 임마', true);
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE, END_DATE) values('1', 'guest', '마감기한', 'todo list!!!', true, '2019-05-18');
+insert into TODO_LIST(PCODE, USER_ID, TITLE, CONTENT, IS_COMPLETE, END_DATE) values('1', 'guest', '마감기한 테스트', 'todo list!!!', true, '2019-05-17');
+
+alter table todo_list add PRIORITY INT AFTER IS_COMPLETE
