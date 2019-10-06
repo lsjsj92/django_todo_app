@@ -2,6 +2,8 @@
 
 python django를 활용한 웹 개발 todo 게시판 만들기
 
+![캡처](https://user-images.githubusercontent.com/24634054/66276499-afb08900-e8ce-11e9-90b1-f1fc4a0f3860.JPG)
+
 3가지 폴더
 
 - todoSubject
